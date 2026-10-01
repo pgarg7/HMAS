@@ -1,0 +1,54 @@
+[build-system]
+requires = ["setuptools>=64", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "hmas"
+version = "0.2.3"
+description = "Holistic Model Assessment (HMAS) metrics and paper figures for AI weather forecasts."
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [
+    { name = "Piyush Garg" },
+]
+keywords = [
+    "weather", "forecast", "verification", "machine-learning",
+    "atmospheric-science", "metrics", "HMAS",
+]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Intended Audience :: Science/Research",
+    "Topic :: Scientific/Engineering :: Atmospheric Science",
+]
+# Mandatory: the on-disk ERA5/forecast workflow (xarray/netCDF4/zarr), tabular
+# output (pandas), and paper-figure reproduction (matplotlib) are now core.
+dependencies = [
+    "numpy>=1.21",
+    "scipy>=1.7",
+    "pandas>=1.3",
+    "xarray>=2022.3",
+    "netCDF4>=1.5",
+    "h5netcdf>=1.0",
+    "zarr>=2.12",
+    "matplotlib>=3.5",
+]
+
+[project.optional-dependencies]
+# Test + lint tooling.
+dev = ["pytest>=7"]
+
+[project.urls]
+Homepage = "https://github.com/rwe-supply-and-trading/HMAS"
+Issues = "https://github.com/rwe-supply-and-trading/HMAS/issues"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+hmas = ["py.typed"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
